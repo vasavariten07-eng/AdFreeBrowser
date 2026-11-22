@@ -1,10 +1,12 @@
 
-const CACHE_NAME = "adfree-browser-v1";
+const CACHE_NAME = "adfree-browser-v2";
 
 const FILES_TO_CACHE = [
   "/AdFreeBrowser/",
   "/AdFreeBrowser/index.html",
-  "/AdFreeBrowser/manifest.json"
+  "/AdFreeBrowser/manifest.json",
+  "/AdFreeBrowser/icon-192.png",
+  "/AdFreeBrowser/icon-512.png"
 ];
 
 self.addEventListener("install", event => {
@@ -37,6 +39,16 @@ self.addEventListener("fetch", event => {
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request)
+      .then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, copy);
+          });
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
