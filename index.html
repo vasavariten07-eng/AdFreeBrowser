@@ -1,11 +1,19 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AdFree Browser</title>
+
+<meta name="theme-color" content="#101522">
+<link rel="manifest" href="/AdFreeBrowser/manifest.json">
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -80,7 +88,7 @@ function search() {
 
   if (value.includes(" ") || !value.includes(".")) {
     address = "https://www.google.com/search?q=" +
-              encodeURIComponent(value);
+      encodeURIComponent(value);
   } else {
     address = value.startsWith("http")
       ? value
@@ -88,6 +96,16 @@ function search() {
   }
 
   window.location.href = address;
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(
+      "/AdFreeBrowser/service-worker.js"
+    ).catch(error => {
+      console.error("Service Worker Error:", error);
+    });
+  });
 }
 </script>
 
