@@ -1,3 +1,4 @@
+
 {
   "name": "AdFree Browser",
   "short_name": "AdFree",
@@ -5,6 +6,19 @@
   "start_url": "/AdFreeBrowser/",
   "scope": "/AdFreeBrowser/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#101522",
-  "theme_color": "#101522"
+  "theme_color": "#101522",
+  "icons": [
+    {
+      "src": "/AdFreeBrowser/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/AdFreeBrowser/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
