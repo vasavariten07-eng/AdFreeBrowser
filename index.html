@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdFree Browser</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #101522;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 22px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #64b5ff;
+}
+
+.search {
+  display: flex;
+  margin: 15px;
+  background: #202b40;
+  border-radius: 30px;
+  padding: 8px;
+}
+
+input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+}
+
+button {
+  background: #3988ff;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 12px 18px;
+}
+
+.message {
+  text-align: center;
+  margin-top: 100px;
+  color: #aab6cc;
+}
+</style>
+</head>
+
+<body>
+
+<header>🌐 AdFree Browser</header>
+
+<div class="search">
+  <input id="url" placeholder="Search or enter website">
+  <button onclick="search()">Go</button>
+</div>
+
+<div class="message">
+  <h2>Welcome!</h2>
+  <p>Your private browsing journey starts here.</p>
+  <p>Ads • Pop-ups • Trackers Protection</p>
+</div>
+
+<script>
+function search() {
+  let value = document.getElementById("url").value.trim();
+
+  if (!value) return;
+
+  let address;
+
+  if (value.includes(" ") || !value.includes(".")) {
+    address = "https://www.google.com/search?q=" +
+              encodeURIComponent(value);
+  } else {
+    address = value.startsWith("http")
+      ? value
+      : "https://" + value;
+  }
+
+  window.location.href = address;
+}
+</script>
+
+</body>
+</html>
