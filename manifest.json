@@ -1,0 +1,10 @@
+{
+  "name": "AdFree Browser",
+  "short_name": "AdFree",
+  "description": "A privacy-focused browser with ad and tracker blocking.",
+  "start_url": "/AdFreeBrowser/",
+  "scope": "/AdFreeBrowser/",
+  "display": "standalone",
+  "background_color": "#101522",
+  "theme_color": "#101522"
+}
